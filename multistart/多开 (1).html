@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <title>??</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style type="text/css">
+        *{
+        	margin: 0;
+        	padding: 0;
+        }
+       	.div1{
+            background-color: rgba(255, 192, 203, 0.432);
+       		width: 45vw;
+       		height: 45vh;
+       		margin-top: 0vh;
+       		margin-left: 0vw;
+       		overflow: hidden;
+       	}
+       	.div2{
+            background-color: rgba(192, 255, 216, 0.404);
+       		width: 45vw;
+       		height: 45vh;
+       		margin-top: 0vh;
+       		margin-right: 0vw;
+       	}
+        .div3{
+            background-color: rgba(211, 192, 255, 0.589);
+       		width: 45vw;
+       		height: 45vh;
+       		margin-bottom: 0vh;
+       		margin-left: 0vw;
+       	}
+        .div4{
+            background-color: rgba(255, 251, 192, 0.582);
+       		width: 45vw;
+       		height: 45vh;
+       		margin-bottom: 0vh;
+       		margin-right: 0vw;
+       	}
+    </style>
+    <script type="text/javascript">
+        var userinfo = [
+            {"username":"guchao01","passward":"ggc123"},
+            {"username":"guchao02","passward":"ggc123"},
+            {"username":"guchao03","passward":"ggc123"},
+            {"username":"guchao04","passward":"ggc123"},
+        ]
+
+        var row = 2;
+        var colomn = 2;
+        var width = 700;
+        var height = 500;
+        var borderW = 20;
+        var borderH = 10;
+
+        function addRow() {
+            var rowStyle = $("<div></div>")
+            rowStyle.addClass("div"+(i+1).toString())
+            $("body").append(rowStyle)
+        }
+
+        //显示row行 colomn列
+        function showTable() {
+            for(var i=0;i<row;i++) {
+                addRow(i)
+                for(var j=0;j<colomn;j++) {
+
+                }
+            }
+        }
+
+        //显示右侧功能按钮
+        function showBTNs() {
+
+        }
+
+        //初始化一些参数
+        function init() {
+            
+        }
+
+        //更新页面
+        function updateView() {
+            showTable();
+            showBTNs();
+        }
+
+        $(document).ready(function () {
+            init();
+            updateView()
+        });
+    </script>
+</head>
+<body>
+    <!-- <a href="http://localhost:7456/?userName=guchao01&password=ggcc123" title="guchao01" target="_blank">guchao01</a><br>
+    <a href="http://localhost:7456/?userName=guchao02&password=ggcc123" title="guchao02" target="_blank">guchao02</a><br>
+    <a href="http://localhost:7456/?userName=guchao03&password=ggcc123" title="guchao03" target="_blank">guchao03</a><br>
+    <a href="http://localhost:7456/?userName=guchao04&password=ggcc123" title="guchao04" target="_blank">guchao04</a><br> -->
+    <!-- <div>
+            <iframe id="id_iframe1" name="nm_iframe" src="" class="div1">1</iframe>
+
+            <iframe id="id_iframe2" name="nm_iframe" src="" class="div2">2</iframe>
+    </div>
+    <div>
+            <iframe id="id_iframe3" name="nm_iframe" src="" class="div3">3</iframe>    
+
+            <iframe id="id_iframe4" name="nm_iframe" src="" class="div4">4</iframe>  
+    </div> -->
+
+</body>
+</html>
