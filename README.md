@@ -1,0 +1,2 @@
+# CocosCreator-MultiStartPage
+Just Test
