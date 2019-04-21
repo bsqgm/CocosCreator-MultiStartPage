@@ -15,7 +15,6 @@
        		height: 45vh;
        		margin-top: 0vh;
        		margin-left: 0vw;
-       		overflow: hidden;
        	}
        	.div2{
             background-color: rgba(192, 255, 216, 0.404);
@@ -38,6 +37,13 @@
        		margin-bottom: 0vh;
        		margin-right: 0vw;
        	}
+
+        .userbtn{
+            width:80px;
+            height:40px;
+            margin: 10px 25px 10px 25px;
+            display: block;
+        }
     </style>
     <script type="text/javascript">
         var userinfo = [
@@ -48,31 +54,68 @@
         ]
 
         var row = 2;
-        var colomn = 2;
         var width = 700;
+        var rowNum = 2;
+        var colomnNum = 2;
+        var width = 500;
         var height = 500;
         var borderW = 20;
         var borderH = 10;
+        var maxUserCount = 4;
 
-        function addRow() {
-            var rowStyle = $("<div></div>")
-            rowStyle.addClass("div"+(i+1).toString())
+        //添加行
+        function addRow(i) {
+            var rowStyle = $(`<div id=row_${i}></div>`);
+            //rowStyle.addClass("div"+(i+1).toString())
+            //rowStyle.css("width", width);
+            rowStyle.css("height", height + borderH);
             $("body").append(rowStyle)
+            return rowStyle;
+        }
+
+        //添加列
+        function addColumn(row, i, j) {
+            var columnStyle = $(`<div id=row_${i}_column_${j}></div>`);
+            columnStyle.text(`row:${i} column:${j}`)
+            columnStyle.css("float", "left");
+            columnStyle.css("height", height);
+            columnStyle.css("width", width);
+            columnStyle.addClass("div"+(i*2+j+1).toString())
+            row.append(columnStyle);
+            return columnStyle;
         }
 
         //显示row行 colomn列
         function showTable() {
-            for(var i=0;i<row;i++) {
-                addRow(i)
-                for(var j=0;j<colomn;j++) {
-
+            $("body").empty();
+            for(var i=0;i<rowNum;i++) {
+                var row = addRow(i);
+                for(var j=0;j<colomnNum;j++) {
+                    addColumn(row, i, j);
                 }
             }
         }
 
         //显示右侧功能按钮
         function showBTNs() {
+            var firstRow = $("#row_0");
 
+            var continer = $(`<div></div>`);
+            continer.css("float","left");
+            for(var i=0; i < userinfo.length; i++) {
+                var userbtn = $(`<button id=userbtn_${i}></button>`);
+                userbtn.text(userinfo[i].username)
+                userbtn.addClass("userbtn")
+                userbtn.click((event)=>{
+
+                })
+                continer.append(userbtn) 
+            }
+            var userbtn = $(`<button id=userbtn_all></button>`);
+            userbtn.text("start all")
+            userbtn.addClass("userbtn")
+            continer.append(userbtn) 
+            firstRow.append(continer);
         }
 
         //初始化一些参数
@@ -88,11 +131,11 @@
 
         $(document).ready(function () {
             init();
-            updateView()
+            updateView();
         });
     </script>
 </head>
-<body>
+<body overflow="scroll">
     <!-- <a href="http://localhost:7456/?userName=guchao01&password=ggcc123" title="guchao01" target="_blank">guchao01</a><br>
     <a href="http://localhost:7456/?userName=guchao02&password=ggcc123" title="guchao02" target="_blank">guchao02</a><br>
     <a href="http://localhost:7456/?userName=guchao03&password=ggcc123" title="guchao03" target="_blank">guchao03</a><br>
